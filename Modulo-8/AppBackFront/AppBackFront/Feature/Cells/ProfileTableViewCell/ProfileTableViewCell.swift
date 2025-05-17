@@ -1,5 +1,5 @@
 //
-//  ProfileImageTableViewCell.swift
+//  ProfileTableViewCell.swift
 //  AppBackFront
 //
 //  Created by Jenifer Rocha on 17/05/25.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ProfileImageTableViewCell: UITableViewCell {
+class ProfileTableViewCell: UITableViewCell {
+
+    static let identifier: String = String(describing: ProfileTableViewCell.self)
     
-    static let identifier: String = String(describing: ProfileImageTableViewCell.self)
-    
-    lazy var screen: ProfileImageTableViewCellScreen = {
-        let view = ProfileImageTableViewCellScreen()
+    lazy var screen: ProfileTableViewCellScreen = {
+        let view = ProfileTableViewCellScreen()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -41,5 +41,5 @@ class ProfileImageTableViewCell: UITableViewCell {
             screen.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-    
+
 }
