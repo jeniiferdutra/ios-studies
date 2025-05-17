@@ -41,5 +41,9 @@ class ProfileTableViewCell: UITableViewCell {
             screen.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
+    
+    public func setupCell(delegate: ProfileTableViewCellScreenProtocol) {
+        screen.delegate(delegate: delegate)
+    }
 
 }

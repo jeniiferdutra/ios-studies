@@ -7,13 +7,28 @@
 
 import UIKit
 
+protocol ProfileTableViewCellScreenProtocol: AnyObject {
+    func tappedExitAppButton()
+}
+
 class ProfileTableViewCellScreen: UIView {
+    
+    private weak var delegate: ProfileTableViewCellScreenProtocol?
+    
+    public func delegate(delegate: ProfileTableViewCellScreenProtocol?) {
+        self.delegate = delegate
+    }
+    
     
     lazy var userImageView: UIImageView = {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
         img.image = UIImage(named: "user01")
         img.contentMode = .scaleAspectFill
+        img.clipsToBounds = true
+        img.layer.cornerRadius = 65
+        img.layer.borderWidth = 2
+        img.layer.borderColor = UIColor.white.cgColor
         return img
     }()
     
@@ -26,21 +41,22 @@ class ProfileTableViewCellScreen: UIView {
         return img
     }()
     
-    lazy var closeButton: UIButton = {
+    lazy var exitAppButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.clipsToBounds = true
+        btn.setTitle("Sair do App", for: .normal)
         btn.layer.cornerRadius = 8
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         btn.setTitleColor(UIColor(red: 207/255, green: 0/255, blue: 192/255, alpha: 1), for: .normal)
         btn.layer.borderWidth = 1.7
         btn.layer.borderColor = UIColor(red: 207/255, green: 0/255, blue: 192/255, alpha: 1).cgColor
-        btn.addTarget(self, action: #selector(tappedCloseButton), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(tappedExitAppButton), for: .touchUpInside)
         return btn
     }()
     
-    @objc func tappedCloseButton() {
-        print(#function)
+    @objc func tappedExitAppButton() {
+        delegate?.tappedExitAppButton()
     }
     
     lazy var nameLabel: UILabel = {
@@ -49,6 +65,7 @@ class ProfileTableViewCellScreen: UIView {
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 22)
         label.text = "Guilherme Zakalski"
+        label.textAlignment = .right
         return label
     }()
     
@@ -58,6 +75,7 @@ class ProfileTableViewCellScreen: UIView {
         label.textColor = UIColor(red: 255/255, green: 152/255, blue: 255/255, alpha: 1.0)
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.text = "@userProfile"
+        label.textAlignment = .right
         return label
     }()
 
@@ -75,7 +93,7 @@ class ProfileTableViewCellScreen: UIView {
     private func addViews() {
         addSubview(userImageView)
         addSubview(editImageView)
-        addSubview(closeButton)
+        addSubview(exitAppButton)
         addSubview(nameLabel)
         addSubview(profileAtLabel)
     }
@@ -93,15 +111,15 @@ class ProfileTableViewCellScreen: UIView {
             editImageView.widthAnchor.constraint(equalToConstant: 25),
             
             nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 50),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
             profileAtLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
-            profileAtLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            profileAtLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
             
-            closeButton.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 60),
-            closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            closeButton.heightAnchor.constraint(equalToConstant: 40)
+            exitAppButton.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 60),
+            exitAppButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            exitAppButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            exitAppButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
