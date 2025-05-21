@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewModel {
     
+    private var service: HomeService = HomeService()
+    
     public func fetchRequest() {
         
     }
