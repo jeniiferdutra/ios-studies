@@ -43,32 +43,33 @@ class HomeService {
         }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error { // tirando a opcionalidade do erro
-                print("ERROR \(#function) Detalhe do erro: \(error.localizedDescription)")
-                completion(.failure(.networkFailure(error)))
-                return
-            }
-            
-            guard let data else {
-                completion(.failure(.noData))
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(.failure(.invalidResponse))
-                return
-            }
-            
-            do {
-                let personList: PersonList = try JSONDecoder().decode(PersonList.self, from: data)
-                print("SUCCESS -> \(#function)")
-                completion(.success(personList))
-            } catch {
-                print("ERROR -> \(#function)")
-                completion(.failure(.decodingError(error)))
+            DispatchQueue.main.async {
+                if let error { // tirando a opcionalidade do erro
+                    print("ERROR \(#function) Detalhe do erro: \(error.localizedDescription)")
+                    completion(.failure(.networkFailure(error)))
+                    return
+                }
+                
+                guard let data else {
+                    completion(.failure(.noData))
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    completion(.failure(.invalidResponse))
+                    return
+                }
+                
+                do {
+                    let personList: PersonList = try JSONDecoder().decode(PersonList.self, from: data)
+                    print("SUCCESS -> \(#function)")
+                    completion(.success(personList))
+                } catch {
+                    print("ERROR -> \(#function)")
+                    completion(.failure(.decodingError(error)))
+                }
             }
         }
         task.resume()
     }
-    
 }
