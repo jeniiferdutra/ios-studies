@@ -7,25 +7,22 @@
 
 import Foundation
 
-enum HTTPMethod: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
-}
-
-protocol NetworkLayer {
-    var session: URLSession { get }
-    func request<T: Decodable>(with urlString: String, method: HTTPMethod, decodeType: T.Type, completion: @escaping (Result<T, NetworkError>
-    ) -> Void)// passar qualquer tipo de objeto
-    
-}
-
 class ServiceManeger: NetworkLayer {
     
     static var shared: ServiceManeger = ServiceManeger()
     
-    private init() {}
+    private var baseURL: String
+    
+    private init(baseURL: String? = nil) {
+        
+        if let baseURL {
+            self.baseURL = baseURL
+        } else if let baseURLString = Bundle.main.infoDictionary?["BaseURL"] as? String {
+            self.baseURL = baseURLString
+        } else {
+            self.baseURL = ""   
+        }
+    }
     
     var session: URLSession = URLSession.shared
     
