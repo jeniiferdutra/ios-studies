@@ -27,7 +27,6 @@ class HomeViewModel {
             guard let self else { return }
             switch result {
             case .success(let success):
-                print(success)
                 personList = success
                 delegate?.success()
             case .failure(let failure):
