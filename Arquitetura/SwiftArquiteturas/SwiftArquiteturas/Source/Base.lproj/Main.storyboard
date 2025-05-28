@@ -10,7 +10,7 @@
         <!--HomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="SwiftArquiteturas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" id="BYZ-38-t0r" customClass="HomeVC" customModule="SwiftArquiteturas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,10 +31,10 @@
             </objects>
             <point key="canvasLocation" x="509" y="-28"/>
         </scene>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="J1V-5D-YFN">
             <objects>
-                <viewController id="Jqz-Cr-MEZ" sceneMemberID="viewController">
+                <viewController id="Jqz-Cr-MEZ" customClass="LoginVC" customModule="SwiftArquiteturas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TiZ-kR-hh0">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,11 +45,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qxo-ZA-UC8">
-                                <rect key="frame" x="56" y="160" width="328" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DlY-dL-34J">
                                 <rect key="frame" x="56" y="265" width="328" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -70,6 +65,9 @@
                                 <color key="tintColor" systemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Entrar"/>
+                                <connections>
+                                    <action selector="openButtontap:" destination="Jqz-Cr-MEZ" eventType="touchUpInside" id="kT7-yF-5of"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHy-2N-7zR">
                                 <rect key="frame" x="56" y="437" width="328" height="40"/>
@@ -80,7 +78,15 @@
                                 <color key="tintColor" systemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Registrar"/>
+                                <connections>
+                                    <action selector="registerButtonTap:" destination="Jqz-Cr-MEZ" eventType="touchUpInside" id="h14-ng-jCm"/>
+                                </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qxo-ZA-UC8">
+                                <rect key="frame" x="56" y="160" width="328" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MFk-Rl-ARs"/>
                         <color key="backgroundColor" red="0.29137597753526751" green="0.27795848288603414" blue="0.39632360713998072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -106,15 +112,19 @@
                             <constraint firstItem="DlY-dL-34J" firstAttribute="leading" secondItem="MFk-Rl-ARs" secondAttribute="leading" constant="56" id="wT7-yH-5jF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="qxo-ZA-UC8" id="w4O-su-j6K"/>
+                        <outlet property="passwordTextField" destination="DlY-dL-34J" id="GvK-6m-vk4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMo-qr-fcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-934.09090909090912" y="-27.615062761506277"/>
         </scene>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="crR-eK-bZM">
             <objects>
-                <viewController id="fJc-kO-t4J" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="fJc-kO-t4J" customClass="LoginVC" customModule="SwiftArquiteturas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dof-oB-zqr">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
