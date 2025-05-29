@@ -35,7 +35,7 @@
         <!--LoginVC-->
         <scene sceneID="J1V-5D-YFN">
             <objects>
-                <viewController id="Jqz-Cr-MEZ" customClass="LoginVC" customModule="SwiftArquiteturas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="Jqz-Cr-MEZ" customClass="LoginVC" customModule="SwiftArquiteturas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TiZ-kR-hh0">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,6 +71,9 @@
                                 <color key="tintColor" systemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Entrar"/>
+                                <connections>
+                                    <action selector="tappedLoginButton:" destination="Jqz-Cr-MEZ" eventType="touchUpInside" id="Hdy-6w-DFr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHy-2N-7zR">
                                 <rect key="frame" x="56" y="767" width="328" height="40"/>
@@ -81,6 +84,9 @@
                                 <color key="tintColor" systemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Registrar"/>
+                                <connections>
+                                    <action selector="tappedRegisterButton:" destination="Jqz-Cr-MEZ" eventType="touchUpInside" id="49I-hz-vOn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MFk-Rl-ARs"/>
@@ -107,6 +113,10 @@
                             <constraint firstItem="DlY-dL-34J" firstAttribute="leading" secondItem="MFk-Rl-ARs" secondAttribute="leading" constant="56" id="wT7-yH-5jF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="qxo-ZA-UC8" id="uoB-Sr-DkH"/>
+                        <outlet property="passwordTextField" destination="DlY-dL-34J" id="jyg-eT-yxQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMo-qr-fcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -115,7 +125,7 @@
         <!--RegisterVC-->
         <scene sceneID="crR-eK-bZM">
             <objects>
-                <viewController storyboardIdentifier="RegisterVC" id="fJc-kO-t4J" customClass="RegisterVC" customModule="SwiftArquiteturas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" id="fJc-kO-t4J" customClass="RegisterVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dof-oB-zqr">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,6 +172,9 @@
                                 <color key="tintColor" systemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Registrar"/>
+                                <connections>
+                                    <action selector="tappedRegisterButton:" destination="fJc-kO-t4J" eventType="touchUpInside" id="zCC-cd-RjG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t2-no-vcW">
                                 <rect key="frame" x="56" y="767" width="328" height="40"/>
@@ -172,6 +185,9 @@
                                 <color key="tintColor" systemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Voltar"/>
+                                <connections>
+                                    <action selector="tappedBackButton:" destination="fJc-kO-t4J" eventType="touchUpInside" id="vFX-mV-1Bv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A91-CE-iuN"/>
@@ -196,6 +212,11 @@
                             <constraint firstItem="A91-CE-iuN" firstAttribute="trailing" secondItem="w7V-6E-9rA" secondAttribute="trailing" constant="56" id="taL-bF-GQP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="8xW-eh-KqO" id="1p6-Gu-dpd"/>
+                        <outlet property="emailTextField" destination="fLK-Ke-hoG" id="5Mf-bL-fN7"/>
+                        <outlet property="passwordTextField" destination="w7V-6E-9rA" id="J7y-KF-f5b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCl-HW-ZYG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
