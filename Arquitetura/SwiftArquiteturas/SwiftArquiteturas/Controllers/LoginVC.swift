@@ -13,12 +13,6 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-    
     
     @IBAction func openButtontap(_ sender: UIButton) {
         let manager = UserManager(business: UserBusiness())
@@ -40,6 +34,10 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func registerButtonTap(_ sender: UIButton) {
+        let register = self.storyboard?.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        
+        register.modalPresentationStyle = .fullScreen
+        self.present(register, animated: true)
     }
     
     func openHomeView() {
