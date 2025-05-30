@@ -18,7 +18,7 @@ class SwiftArquiteturasTests: XCTestCase { // Classe de testes unitários
         let manager = UserManager(business: UserBusiness()) // Instância do gerenciador de usuário com a camada de negócios real
 
         // Chamada ao método de registro
-        manager.register(email: "teste@teste.com",
+        manager.register(email: "jenifer@teste.com",
                          password: "123456") { userM in
             print(userM) // Sucesso: imprime o usuário
             exp.fulfill() // Libera a expectativa após sucesso
