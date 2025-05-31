@@ -1,5 +1,5 @@
 //
-//  LoginPresenter.swift
+//  RegisterPresenter.swift
 //  SwiftArquiteturas
 //
 //  Created by Jenifer Rocha on 29/05/25.
@@ -7,19 +7,19 @@
 
 import Foundation
 
-protocol LoginPresenterDelegate {
+protocol RegisterPresenterDelegate {
     func showMessage(title: String, message: String)
     func goHome()
 }
 
-class LoginPresenter {
-    var delegate: LoginPresenterDelegate?
+class RegisterPresenter {
+    var delegate: RegisterPresenterDelegate?
     
-    func login(userModel: UserModel) {
+    func register(userModel: UserModel) {
         let manager = UserManager(business: UserBusiness())
-        manager.login(email: userModel.email, password: userModel.password) {[weak self] model in
+        manager.register(email: userModel.email, password: userModel.password) { [weak self] model in
             self?.goHome()
-        } failureHandler: {[weak self] error in
+        } failureHandler: { [weak self] error in
             self?.delegate?.showMessage(title: "Error", message: error.localizedDescription)
         }
     }

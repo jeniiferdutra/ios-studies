@@ -85,7 +85,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Registrar"/>
                                 <connections>
-                                    <action selector="tappedRegisterButton:" destination="Jqz-Cr-MEZ" eventType="touchUpInside" id="49I-hz-vOn"/>
+                                    <action selector="tappedRegisterButton:" destination="Jqz-Cr-MEZ" eventType="touchUpInside" id="hWG-3B-a3a"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -125,7 +125,7 @@
         <!--RegisterVC-->
         <scene sceneID="crR-eK-bZM">
             <objects>
-                <viewController storyboardIdentifier="RegisterVC" id="fJc-kO-t4J" customClass="RegisterVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" id="fJc-kO-t4J" customClass="RegisterVC" customModule="SwiftArquiteturas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dof-oB-zqr">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +163,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmw-ak-Tva">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmw-ak-Tva">
                                 <rect key="frame" x="56" y="697" width="328" height="40"/>
                                 <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                                 <constraints>
@@ -176,7 +176,7 @@
                                     <action selector="tappedRegisterButton:" destination="fJc-kO-t4J" eventType="touchUpInside" id="zCC-cd-RjG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t2-no-vcW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t2-no-vcW">
                                 <rect key="frame" x="56" y="767" width="328" height="40"/>
                                 <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                                 <constraints>
@@ -194,20 +194,28 @@
                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                         <constraints>
                             <constraint firstItem="A91-CE-iuN" firstAttribute="trailing" secondItem="6bN-TM-Yr7" secondAttribute="trailing" constant="56" id="1qF-rK-nDf"/>
+                            <constraint firstItem="A91-CE-iuN" firstAttribute="trailing" secondItem="1t2-no-vcW" secondAttribute="trailing" constant="56" id="4KB-HT-YET"/>
                             <constraint firstItem="sO5-gT-dq1" firstAttribute="top" secondItem="fLK-Ke-hoG" secondAttribute="bottom" constant="42" id="5JT-dI-TfT"/>
+                            <constraint firstItem="fmw-ak-Tva" firstAttribute="leading" secondItem="A91-CE-iuN" secondAttribute="leading" constant="56" id="Amu-Lj-p4x"/>
                             <constraint firstItem="w7V-6E-9rA" firstAttribute="leading" secondItem="A91-CE-iuN" secondAttribute="leading" constant="56" id="EnJ-iq-Q5k"/>
+                            <constraint firstItem="A91-CE-iuN" firstAttribute="bottom" secondItem="1t2-no-vcW" secondAttribute="bottom" constant="115" id="Fqf-Am-rKT"/>
                             <constraint firstItem="6bN-TM-Yr7" firstAttribute="top" secondItem="w7V-6E-9rA" secondAttribute="bottom" constant="42" id="Ged-ff-J9K"/>
+                            <constraint firstItem="1t2-no-vcW" firstAttribute="leading" secondItem="A91-CE-iuN" secondAttribute="leading" constant="56" id="GyZ-jy-Ekf"/>
                             <constraint firstItem="dek-Fd-qRv" firstAttribute="leading" secondItem="A91-CE-iuN" secondAttribute="leading" constant="56" id="L9V-Gc-8Pb"/>
                             <constraint firstItem="A91-CE-iuN" firstAttribute="trailing" secondItem="fLK-Ke-hoG" secondAttribute="trailing" constant="56" id="LZW-TH-x2m"/>
                             <constraint firstItem="dek-Fd-qRv" firstAttribute="top" secondItem="A91-CE-iuN" secondAttribute="top" constant="69" id="Lo2-Qb-vKL"/>
                             <constraint firstItem="sO5-gT-dq1" firstAttribute="leading" secondItem="A91-CE-iuN" secondAttribute="leading" constant="56" id="M80-3J-UOV"/>
+                            <constraint firstItem="1t2-no-vcW" firstAttribute="top" secondItem="fmw-ak-Tva" secondAttribute="bottom" constant="30" id="Nc8-eB-pvf"/>
                             <constraint firstItem="6bN-TM-Yr7" firstAttribute="leading" secondItem="A91-CE-iuN" secondAttribute="leading" constant="56" id="OCa-dW-fvn"/>
                             <constraint firstItem="1t2-no-vcW" firstAttribute="top" secondItem="fmw-ak-Tva" secondAttribute="bottom" constant="30" id="Omf-cW-Tas"/>
                             <constraint firstItem="8xW-eh-KqO" firstAttribute="top" secondItem="6bN-TM-Yr7" secondAttribute="bottom" constant="8" id="QUw-Bm-YV4"/>
                             <constraint firstItem="fLK-Ke-hoG" firstAttribute="top" secondItem="dek-Fd-qRv" secondAttribute="bottom" constant="8" id="Qak-uQ-8bg"/>
                             <constraint firstItem="fLK-Ke-hoG" firstAttribute="leading" secondItem="A91-CE-iuN" secondAttribute="leading" constant="56" id="Qtt-fu-XSY"/>
                             <constraint firstItem="A91-CE-iuN" firstAttribute="trailing" secondItem="8xW-eh-KqO" secondAttribute="trailing" constant="56" id="SVO-uc-A6M"/>
+                            <constraint firstItem="fmw-ak-Tva" firstAttribute="top" secondItem="8xW-eh-KqO" secondAttribute="bottom" constant="293" id="hAZ-e0-Gwy"/>
+                            <constraint firstItem="A91-CE-iuN" firstAttribute="trailing" secondItem="fmw-ak-Tva" secondAttribute="trailing" constant="56" id="hH9-Hk-4Pl"/>
                             <constraint firstItem="8xW-eh-KqO" firstAttribute="leading" secondItem="A91-CE-iuN" secondAttribute="leading" constant="56" id="iRH-YX-7bF"/>
+                            <constraint firstItem="1t2-no-vcW" firstAttribute="top" secondItem="fmw-ak-Tva" secondAttribute="bottom" constant="30" id="s90-O6-ZTR"/>
                             <constraint firstItem="w7V-6E-9rA" firstAttribute="top" secondItem="sO5-gT-dq1" secondAttribute="bottom" constant="8" id="t1y-Gf-Mbn"/>
                             <constraint firstItem="A91-CE-iuN" firstAttribute="trailing" secondItem="w7V-6E-9rA" secondAttribute="trailing" constant="56" id="taL-bF-GQP"/>
                         </constraints>
@@ -228,13 +236,13 @@
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

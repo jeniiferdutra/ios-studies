@@ -32,7 +32,12 @@ class LoginVC: UIViewController {
     
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
+        let register = self.storyboard?.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        
+        register.modalPresentationStyle = .fullScreen
+        self.present(register, animated: true)
     }
+    
 }
 
 extension LoginVC: LoginPresenterDelegate {
