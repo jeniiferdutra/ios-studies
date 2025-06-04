@@ -13,6 +13,16 @@ class LoginCoordinator: Coordinator {
     
     func start() {
         let viewController = LoginViewController()
+        
+        viewController.onRegisterTapped = {
+            let coordinator = RegisterCoordinator(navigationController: self.navigationController)
+            coordinator.start()
+        }
+        
+        viewController.onLoginSuccess = {
+            let coordinator = HomeCoordinator(navigationController: self.navigationController)
+        }
+        
         self.navigationController.pushViewController(viewController, animated: true)
     }
     
