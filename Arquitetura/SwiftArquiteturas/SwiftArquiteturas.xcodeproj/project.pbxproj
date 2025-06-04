@@ -40,11 +40,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				Source/Home/HomeVC.swift,
-				Source/Login/LoginPresenter.swift,
-				Source/Login/LoginVC.swift,
-				Source/Register/RegisterPresenter.swift,
-				Source/Register/RegisterVC.swift,
 			);
 			target = D05B75952DE546C500E0A7CD /* SwiftArquiteturas */;
 		};

@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationBar.backgroundColor = .blue
+        navigationController.navigationBar.backgroundColor = .brown
         
         window.rootViewController = navigationController
         self.window = window
