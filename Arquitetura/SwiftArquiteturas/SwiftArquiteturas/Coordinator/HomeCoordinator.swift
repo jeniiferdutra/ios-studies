@@ -12,12 +12,12 @@ class HomeCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     func start() {
-        <#code#>
+        let viewController = HomeViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        navigationController.present(viewController, animated: true)
     }
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
-    
 }

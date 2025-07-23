@@ -39,11 +39,14 @@ class LoginViewController: UIViewController {
     }
     
     private func onOpenButtonTapped(_ email: String, _ password: String) {
-        let manager = UserManager(business: UserBusiness())
-        manager.login(email: email, password: password) { [weak self] userModel in
-            self?.onLoginSuccess?()
-        } failureHandler: { [weak self] error in
-            self?.showMessage("Error", error.localizedDescription)
+        let userViewModel = UserViewModel()
+        userViewModel.getFromUserApi(email, password) { [weak self] result in
+            switch result {
+            case .success(let success):
+                self?.onLoginSuccess?()
+            case .failure(let error):
+                self?.showMessage("Erro", error.localizedDescription)
+            }
         }
     }
     
