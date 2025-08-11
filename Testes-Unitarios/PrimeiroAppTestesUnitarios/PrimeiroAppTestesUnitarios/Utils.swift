@@ -16,4 +16,12 @@ class Utils {
     static func isInt(text: String) -> Bool {
         return Int(text) != nil
     }
+    
+    static func random(upperBound: Int) -> Int {
+        return Int.random(in: 0...upperBound)
+    }
+    
+    static func space(space: String) -> String {
+        return space.replacingOccurrences(of: " ", with: "")
+    }
 }
