@@ -9,14 +9,11 @@ import Foundation
 
 class Utils {
     
-    static func avarage(numbers: [Int]) -> Int {
-//        var total = 0
-//        for number in numbers {
-//            total = total + number
-//        }
-//        total = total / numbers.count
-//        return total
-        
+    static func average(numbers: [Int]) -> Int {
         return numbers.reduce( 0, +) / numbers.count
+    }
+    
+    static func isInt(text: String) -> Bool {
+        return Int(text) != nil
     }
 }
