@@ -19,15 +19,20 @@ final class ViewModelTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        mockService = nil
+        viewModel = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testFetchRequestSuccess() {
+        
+        var list: [String] = ["category1", "category2"]
+        mockService.result = .success(list)
+        
+        viewModel.fetchRequest()
+        
+        XCTAssertEqual(viewModel.numberOfRowsInSection, list.count)
+        XCTAssertEqual(viewModel.loadCurrentCategory(indexPath: IndexPath(row: 0, section: 0)), list[0])
+
     }
 }
 
