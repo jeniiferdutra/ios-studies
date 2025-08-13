@@ -1,17 +1,21 @@
 //
-//  ChuckTests.swift
+//  ViewModelTests.swift
 //  ChuckTests
 //
-//  Created by Jenifer Rocha on 11/08/25.
+//  Created by Jenifer Rocha on 12/08/25.
 //
 
 import XCTest
 @testable import Chuck
 
-final class ChuckTests: XCTestCase {
+final class ViewModelTests: XCTestCase {
+    
+    var viewModel: HomeViewModel!
+    var mockService: MockHomeService!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        mockService = MockHomeService()
+        viewModel = HomeViewModel(service: mockService)
     }
 
     override func tearDownWithError() throws {
@@ -25,12 +29,13 @@ final class ChuckTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
+}
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+class MockHomeService: HomeServiceProtocol {
+    var result: Result<[String], Error> = .success([])
+    func getHome(completion: @escaping (Result<[String], any Error>) -> Void) {
+        completion(result)
     }
-
+    
+    
 }
