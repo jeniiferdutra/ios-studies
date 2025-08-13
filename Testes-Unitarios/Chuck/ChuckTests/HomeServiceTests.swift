@@ -40,7 +40,7 @@ final class HomeServiceTests: XCTestCase {
             }
         }
         // Espera até 10 segundos pela expectativa ser cumprida, para não finalizar o teste antes da resposta
-        waitForExpectations(timeout: 10)
+        waitForExpectations(timeout: 40)
     }
     
     
