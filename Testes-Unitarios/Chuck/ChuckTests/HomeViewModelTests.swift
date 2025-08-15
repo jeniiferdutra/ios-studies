@@ -50,23 +50,31 @@ final class HomeViewModelTests: XCTestCase {
     
     func testFetchRequestFailure() {
         
+        // Configura o mockService para simular uma falha na requisição
         mockService.result = .failure(NSError(domain: "com.test.error", code: 0))
         viewModel.fetchRequest()
         
+        // Verifica se o número de itens retornados é 0 após o erro
         XCTAssertEqual(viewModel.numberOfRowsInSection, 0)
+        // Verifica se o método de erro do delegate foi chamado
         XCTAssertTrue(mockDelegate.errorCaled)
 
     }
 }
 
+// Classe mock para simular o comportamento do delegate da ViewModel
 class MockHomeViewModelDelegate: HomeViewModelProtocol {
+    
+    // Flags para verificar se os métodos foram chamados
     var successCaled = false
     var errorCaled = false
     
+    // Simula a ação quando há sucesso
     func success() {
         successCaled = true
     }
     
+    // Simula a ação quando há erro
     func error(message: String) {
         errorCaled = true
     }
