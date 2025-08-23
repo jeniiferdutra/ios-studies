@@ -36,26 +36,29 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var exibirMensagem: Bool = true
+    @State private var text: String = ""
     
     var body: some View {
         VStack {
-            Group {
+            VStack {
                 Text(exibirMensagem ? "Mundo" : "Olá")
-                Text(exibirMensagem ? "Mundo" : "Olá")
-                Text(exibirMensagem ? "Mundo" : "Olá")
-                Text(exibirMensagem ? "Mundo" : "Olá")
-                Text(exibirMensagem ? "Mundo" : "Olá")
+                    .font(.system(size: 26, weight: .bold))
+                Button("Alterar mensagem") {
+                    exibirMensagem.toggle() // inverte o booleano = false vira true. substitue o if
+                }
+                .padding()
+                .background(Color.blue)
+                .foregroundStyle(Color.white)
+                .cornerRadius(8)
             }
-                .font(.system(size: 26, weight: .bold))
-            Button("Alterar mensagem") {
-                exibirMensagem.toggle() // inverte o booleano = false vira true. substitue o if
+            VStack {
+                Text(text)
+                    .font(.system(size: 26, weight: .bold))
+                TextField("Digite um texto", text:  $text)
+                    .textFieldStyle(.roundedBorder)
             }
             .padding()
-            .background(Color.blue)
-            .foregroundStyle(Color.white)
-            .cornerRadius(8)
         }
-        .padding()
     }
 }
 
