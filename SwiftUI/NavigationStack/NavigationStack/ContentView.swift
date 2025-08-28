@@ -31,13 +31,15 @@ struct ContentView: View {
                 NavigationLink("Ir para tela 2", value: Color.red)
             }
             .navigationDestination(for: String.self) { value in
-                Text(value)
+                DetailView(text: value)
             }
             .navigationDestination(for: Color.self) { value in
                 ZStack {
                     value
                 }
             }
+            .navigationTitle("Hello world")
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }
