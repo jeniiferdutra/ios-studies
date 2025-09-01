@@ -7,15 +7,24 @@
 
 import SwiftUI
 
+struct Detail: Hashable {
+    var name: String
+    var color: Color
+}
+
 struct DetailView: View {
     
-    var text: String
+    var model: Detail
     
     var body: some View {
-        Text(text)
+        ZStack {
+            model.color
+            Text(model.name)
+                .navigationTitle("Eu sou a tela 1")
+        }
     }
 }
 
 #Preview {
-    DetailView(text: "Essa é a tela 1")
+    DetailView(model: Detail(name: "Jenifer", color: .red))
 }

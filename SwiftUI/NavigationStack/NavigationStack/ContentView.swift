@@ -27,11 +27,11 @@ struct ContentView: View {
         
         NavigationStack {
             VStack(spacing: 10.0) {
-                NavigationLink("Ir para tela 1", value: "Sou a tela 1")
+                NavigationLink("Ir para tela 1", value: Detail(name: "Guilherme", color: .blue))
                 NavigationLink("Ir para tela 2", value: Color.red)
             }
-            .navigationDestination(for: String.self) { value in
-                DetailView(text: value)
+            .navigationDestination(for: Detail.self) { value in
+                DetailView(model: value)
             }
             .navigationDestination(for: Color.self) { value in
                 ZStack {
