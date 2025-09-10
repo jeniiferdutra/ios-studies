@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var email: String = ""
     @State var feedback: String = ""
     @State var nota: Float = 5
+    @State var isPresentedAlert = false
     
     var body: some View {
         NavigationStack {
@@ -61,6 +62,7 @@ struct ContentView: View {
                 Section {
                     Button {
                         print("test test")
+                        isPresentedAlert.toggle()
                     } label: {
                         Text("Enviar feedback")
                             .frame(maxWidth: .infinity)
@@ -72,6 +74,27 @@ struct ContentView: View {
                     .disabled(isDisabledButton)
                 }
             }
+            .navigationTitle("Feedback")
+            .navigationBarTitleDisplayMode(.large)
+            .alert("Enviar feedback", isPresented: $isPresentedAlert) {
+                Button {
+                    print("botao enviar")
+                    clearAll() // chamar a funcao depois de clicar no botao de enviar
+                } label: {
+                    Text("Enviar")
+                }
+            } message: {
+                Text(messageDescription)
+            }
+        }
+    }
+    
+    // Descricao do alert
+    var messageDescription: String {
+        if feedback.isEmpty {
+            return "Nome: \(nome)\nEmail: \(email)\nNota: \(Int(nota))"
+        } else {
+            return "Nome: \(nome)\nEmail: \(email)\nFeedback: \(feedback)\nNota: \(Int(nota))"
         }
     }
     
@@ -80,7 +103,14 @@ struct ContentView: View {
         nome.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
         email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
-
+    
+    // Funcao para limpar
+    func clearAll() {
+        feedback = ""
+        nome = ""
+        email = ""
+        nota = 5
+    }
 }
 
 #Preview {
