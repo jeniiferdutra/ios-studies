@@ -48,19 +48,39 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    
-                } header: {
                     HStack {
                         Text("1")
                         Slider(value: $nota, in: 1...10, step: 1)
                         Text("10")
+                        Spacer().frame(width: 20)
+                        Text("Nota: \(Int(nota))")
                     }
+                } header: {
+                    Text("Nota")
                 }
-
-                
+                Section {
+                    Button {
+                        print("test test")
+                    } label: {
+                        Text("Enviar feedback")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 44)
+                            .foregroundStyle(.white)
+                            .background(isDisabledButton ? Color.gray : Color.blue)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                    .disabled(isDisabledButton)
+                }
             }
         }
     }
+    
+    // Validacao dos campos de textos
+    var isDisabledButton: Bool {
+        nome.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
+        email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
 }
 
 #Preview {
