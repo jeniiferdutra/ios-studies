@@ -11,6 +11,8 @@ struct LoginView: View {
     
     @State var email: String = ""
     @State var senha: String = ""
+    @State var goRegister: Bool = false
+    @State var goNotes: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -36,8 +38,38 @@ struct LoginView: View {
                     .foregroundStyle(.white)
                     
                     Spacer()
+                    
+                    Button {
+                        goNotes.toggle()
+                    } label: {
+                        Text("Login")
+                            .frame(width: 180, height: 45)
+                            .foregroundStyle(.white)
+                            .font(.system(size: 18, weight: .bold))
+                            .background(Color.pinkColor)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                    
+                    Spacer()
+                    
+                    Button {
+                        goRegister.toggle()
+                    } label: {
+                        Text("Nao tem conta? Cadastre-se")
+                            .frame(height: 45)
+                            .foregroundStyle(.white)
+                            .font(.system(size: 18, weight: .bold))
+                    }
+
                 }
                 .padding(.horizontal, 20)
+                .padding(.bottom, 50)
+            }
+            .navigationDestination(isPresented: $goRegister) {
+                RegisterView()
+            }
+            .navigationDestination(isPresented: $goNotes) {
+                NotesView()
             }
         }
     }
