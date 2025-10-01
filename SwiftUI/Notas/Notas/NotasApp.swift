@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-@main
+@main // parte inicial do app
 struct NotasApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             LoginView()
