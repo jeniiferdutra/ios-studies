@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct RegisterView: View {
     
@@ -14,7 +15,8 @@ struct RegisterView: View {
     @State var confirmeSenha: String = ""
     @State var isPresentedAlert: Bool = false
     @State var goNotes: Bool = false
-
+    @State var errorMessage: String = ""
+    
     
     var body: some View {
         ZStack {
@@ -26,7 +28,7 @@ struct RegisterView: View {
                     .foregroundStyle(.white)
                     .padding(.top, 5)
                     .padding(.bottom, 50)
-                                
+                
                 Group {
                     TextField("", text: $email, prompt: Text("Email").foregroundStyle(.white))
                     SecureField("", text: $senha, prompt: Text("Senha").foregroundStyle(.white))
@@ -44,11 +46,7 @@ struct RegisterView: View {
                 Spacer()
                 
                 Button {
-                    if senha == confirmeSenha {
-                        goNotes.toggle()
-                    } else {
-                        isPresentedAlert.toggle()
-                    }
+                    registerUser()
                 } label: {
                     Text("Cadastrar")
                         .frame(maxWidth: .infinity)
@@ -67,7 +65,7 @@ struct RegisterView: View {
         .alert("Atencao!", isPresented: $isPresentedAlert) {
             Button("OK", role: .cancel) {}
         } message: {
-             Text("Verifique a senha e confirme a senha e tente novamente")
+            Text(errorMessage)
         }
         .navigationDestination(isPresented: $goNotes) {
             NotesView()
@@ -76,6 +74,23 @@ struct RegisterView: View {
     
     var isDisabledRegisterButton: Bool { // verificar se sao empty
         return email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || senha.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || confirmeSenha.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+    
+    private func registerUser() {
+        
+        if senha == confirmeSenha {
+            Auth.auth().createUser(withEmail: email, password: senha) { result, error in
+                if let error { // tivemos um erro
+                    errorMessage = error.localizedDescription
+                    isPresentedAlert.toggle()
+                } else {
+                    goNotes.toggle()
+                }
+            }
+        } else {
+            errorMessage = "Verifique a senha e confirme a senha e tente novamente"
+            isPresentedAlert.toggle()
+        }
     }
 }
 
