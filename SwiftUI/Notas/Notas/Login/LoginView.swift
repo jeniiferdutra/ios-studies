@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
     
@@ -13,6 +14,8 @@ struct LoginView: View {
     @State var senha: String = ""
     @State var goRegister: Bool = false
     @State var goNotes: Bool = false
+    @State var errorMessage: String = ""
+    @State var isPresentedAlert: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -37,11 +40,13 @@ struct LoginView: View {
                         RoundedRectangle(cornerRadius: 8).stroke(Color.pinkColor, lineWidth: 2)
                     })
                     .foregroundStyle(.white)
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
                     
                     Spacer()
                     
                     Button {
-                        goNotes.toggle()
+                        loginUser()
                     } label: {
                         Text("Login")
                             .frame(width: 180, height: 45)
@@ -66,11 +71,27 @@ struct LoginView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 50)
             }
+            .alert("Atencao!", isPresented: $isPresentedAlert) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(errorMessage)
+            }
             .navigationDestination(isPresented: $goRegister) {
                 RegisterView()
             }
             .navigationDestination(isPresented: $goNotes) {
                 NotesView()
+            }
+        }
+    }
+    
+    private func loginUser() {
+        Auth.auth().signIn(withEmail: email, password: senha) { result, error  in
+            if let error { 
+                errorMessage = error.localizedDescription
+                isPresentedAlert.toggle()
+            } else {
+                goNotes.toggle()
             }
         }
     }
