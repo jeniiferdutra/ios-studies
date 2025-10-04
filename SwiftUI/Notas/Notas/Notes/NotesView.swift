@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct NotesView: View {
+    
+    @StateObject var viewModel = NotesViewModel()
+    
     var body: some View {
-        Text("Hello, Notes!")
+        List($viewModel.notes, editActions: .all) { $note in
+            Text(note.title)
+            Text(note.content)
+        }
     }
 }
 
 #Preview {
-    NotesView()
+    NavigationStack { // ela sera uma navigation
+        NotesView()
+    }
 }
