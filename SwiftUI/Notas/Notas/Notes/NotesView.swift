@@ -38,8 +38,8 @@ struct NotesView: View {
                 }
             }
         }
-        .navigationDestination(isPresented: $isGoAdditionalNote) {
-            Color.blue
+        .sheet(isPresented: $isGoAdditionalNote) {
+            AddNotesView(viewModel: viewModel)
         }
     }
 }
