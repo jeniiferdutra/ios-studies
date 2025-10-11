@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotesView: View {
     
-    @StateObject var viewModel = NotesViewModel()
+    @State var viewModel = NotesViewModel()
     @State var isGoAdditionalNote: Bool = false
     
     var body: some View {
