@@ -39,7 +39,7 @@ struct HomeView: View {
                             print("go search")
                         }, label: {
                             ZStack {
-                                Image("search")
+                                Image("message")
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 25, height: 25)
