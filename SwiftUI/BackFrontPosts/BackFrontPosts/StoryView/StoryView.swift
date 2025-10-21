@@ -15,7 +15,26 @@ struct StoryView: View {
 
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ZStack {
+                Circle().stroke(gradient, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
+                    .frame(width: 72)
+                Image(story.image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 62, height: 62)
+                    .clipShape(Circle())
+                if story.myStory {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .background(Color.white.clipShape(Circle()))
+                        .foregroundStyle(.blue)
+                        .offset(x: 20, y: 20)
+                    
+                }
+            }
+        }
     }
 }
 
