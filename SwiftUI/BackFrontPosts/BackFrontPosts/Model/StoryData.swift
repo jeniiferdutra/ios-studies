@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct StoryData {
+struct StoryData: Identifiable {
+    var id = UUID()
+    
     var image: String
     var name: String
     var myStory: Bool
