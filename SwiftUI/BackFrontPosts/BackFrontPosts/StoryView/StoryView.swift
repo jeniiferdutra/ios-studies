@@ -40,7 +40,7 @@ struct StoryView: View {
                 .foregroundStyle(.primary)
             
         }
-        .padding(.top, 5)
+        .padding(.top, 10)
     }
 }
 
