@@ -12,7 +12,32 @@ struct PostView: View {
     @State var post: PostData
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack(spacing: 10) {
+                Image(post.profileImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 33, height: 33)
+                    .clipShape(Circle())
+                    .overlay {
+                        Circle().stroke(Color.gray, lineWidth: 0.5)
+                    }
+                Text(post.userName)
+                    .font(Font.system(size: 14, weight: .semibold))
+                Spacer()
+                Button {
+                    print("test ")
+                } label: {
+                    Image("more")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                }
+
+            }
+            .padding(.vertical, 10)
+            .padding(.horizontal, 12)
+        }
     }
 }
 
