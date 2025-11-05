@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct CustomVideoView: View {
     
-    @State var videoURL: URL?
+    var videoURL: URL?
     @Binding var isMuted: Bool
+    @State var player = AVPlayer()
     
     init(isMuted: Binding<Bool>, videoURL: String) {
         _isMuted = isMuted
@@ -19,10 +21,36 @@ struct CustomVideoView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if let url = videoURL {
+            ZStack(alignment: .bottomTrailing) {
+                VideoPlayer(player: player)
+                    .onAppear { // apresentar na tela
+                        player = AVPlayer(url: url)
+                        player.play()
+                        player.isMuted = isMuted
+                    }
+                Color.white.opacity(0)
+                Button {
+                    isMuted.toggle()
+                } label: {
+                    Image(systemName: isMuted ? "speaker.slash.fill" : "speaker.2.fill")
+                        .padding()
+                        .foregroundStyle(.white)
+                        .background(Color.black.opacity(0.7))
+                        .clipShape(Circle())
+                }
+            }
+        } else {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .resizable()
+                .foregroundStyle(.yellow)
+                .frame(width: 50, height: 50)
+            Text("Ops! Tivemos um problema com esse vídeo")
+                .lineLimit(2)// quebra de linha
+        }
     }
 }
 
 #Preview {
-    CustomVideoView(isMuted: .constant(true), videoURL: "demo2")
+    CustomVideoView(isMuted: .constant(true), videoURL: "cars2")
 }
