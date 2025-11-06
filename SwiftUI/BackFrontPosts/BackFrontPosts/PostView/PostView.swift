@@ -10,6 +10,7 @@ import SwiftUI
 struct PostView: View {
     
     @State var post: PostData
+    @Binding var isMuted: Bool
     @State var isLikeAnimation: Bool = false
     
     var body: some View {
@@ -38,7 +39,6 @@ struct PostView: View {
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 12)
-            
             ZStack {
                 if !post.isVideo { // se nao for video
                     Image(post.postImage ?? "error")
@@ -48,7 +48,11 @@ struct PostView: View {
                             tappedLike()
                         })
                 } else {
-                    
+                    CustomVideoView(isMuted: $isMuted, videoURL: post.videoURL)
+                        .frame(minHeight: 350)
+                        .onTapGesture(count: 2, perform: {
+                            tappedLike()
+                        })
                 }
                 Image("white-heart")
                     .resizable()
@@ -58,7 +62,47 @@ struct PostView: View {
                     .opacity(isLikeAnimation ? 1 : 0) // opacidade do coracao
                     .animation(.spring, value: isLikeAnimation) // disparar a animacao
             }
-            
+            HStack {
+                Button {
+                    post.isLiked.toggle()
+                } label: {
+                    Image(post.isLiked ? "like-selected" : "like")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                }
+                
+                Button {
+                    print("teste")
+                } label: {
+                    Image("coment")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                }
+                
+                Button {
+                    print("teste")
+                } label: {
+                    Image("share")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                }
+                
+                Spacer()
+                
+                Button {
+                    post.isSaved.toggle()
+                } label: {
+                    Image(post.isSaved ? "save-selected" : "save")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                }
+            }
+            .padding(.top, 8)
+            .padding(.horizontal, 15)
         }
     }
     
@@ -77,5 +121,5 @@ struct PostView: View {
     
 }
 #Preview {
-    PostView(post: PostMock[1])
+    PostView(post: PostMock[1], isMuted: .constant(true)) // isMuted é o som do video, se ele vai ser mutado ou nao
 }
