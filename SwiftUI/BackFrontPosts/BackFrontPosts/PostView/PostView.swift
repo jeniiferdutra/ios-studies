@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PostView: View {
     
-    @State var post: PostData
+    @Binding var post: PostData
     @Binding var isMuted: Bool
     @State var isLikeAnimation: Bool = false
     
@@ -103,7 +103,25 @@ struct PostView: View {
             }
             .padding(.top, 8)
             .padding(.horizontal, 15)
+            
+            if !post.caption.isEmpty {
+                HStack {
+                    Text(post.userName)
+                        .font(Font.system(size: 15, weight: .bold))
+                    + Text("   ")
+                    + Text(post.caption)
+                        .font(Font.system(size: 15, weight: .regular))
+                    
+                    Spacer()
+                }
+                .multilineTextAlignment(.leading)
+                .padding(.horizontal, 15)
+                .padding(.top, 2)
+                .padding(.bottom, 10)
+            }
         }
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 8)) // deixar o post com bordas
     }
     
     func tappedLike() {
@@ -121,5 +139,6 @@ struct PostView: View {
     
 }
 #Preview {
-    PostView(post: PostMock[1], isMuted: .constant(true)) // isMuted é o som do video, se ele vai ser mutado ou nao
+    @State var post = PostMock[2]
+    return PostView(post: $post, isMuted: .constant(true)) // isMuted é o som do video, se ele vai ser mutado ou nao
 }
