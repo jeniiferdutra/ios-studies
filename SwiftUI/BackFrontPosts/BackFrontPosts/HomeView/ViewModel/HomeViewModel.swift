@@ -5,6 +5,9 @@
 //  Created by Jenifer Rocha on 27/10/25.
 //
 
+import SwiftUI
+
+@Observable
 class HomeViewModel {
     
     var isMuted: Bool = true
