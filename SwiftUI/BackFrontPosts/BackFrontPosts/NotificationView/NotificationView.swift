@@ -9,7 +9,15 @@ import SwiftUI
 
 struct NotificationView: View {
     var body: some View {
-        Text("Notification")
+        NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVStack { // onde vai ficar as notificacoes
+                    Text("Notification")
+                }
+            }
+            .navigationTitle("Notificaçoes")
+            .navigationBarTitleDisplayMode(.large)
+        }
     }
 }
 
