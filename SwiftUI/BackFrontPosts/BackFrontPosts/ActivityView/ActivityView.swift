@@ -24,6 +24,8 @@ struct ActivityView: View {
                     .font(Font.system(size: 12, weight: .semibold))
                 + Text(getDescription())
                     .font(Font.system(size: 12, weight: .regular))
+                + Text(activity.duration)
+                    .font(Font.system(size: 10, weight: .light))
             } else {
                 
             }
@@ -33,11 +35,11 @@ struct ActivityView: View {
     func getDescription() -> String {
         switch activity.activity {
         case .liked:
-            return " teste"
+            return activity.usersInContext.count == 1 ? " curtiu a sua postagem. " : " e outras pessoas curtiram a sua postagem. "
         case .newFollower:
-            return ""
+            return activity.usersInContext.count == 1 ? " começou a seguir voce. " : " começaram a seguir voce e mais \(activity.usersInContext.count - 1) pessoas. "
         case .suggestFollower:
-            return ""
+            return " quem talvez voce conheça, está na Backfront Posts. "
         case .comment:
             return ""
         }
