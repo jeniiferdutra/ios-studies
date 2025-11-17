@@ -27,9 +27,41 @@ struct ActivityView: View {
                 + Text(activity.duration)
                     .font(Font.system(size: 10, weight: .light))
             } else {
-                
+                Text(activity.getUsernames())
+                    .font(Font.system(size: 12, weight: .semibold))
+                + Text(" comentou em sua publicaçao: ")
+                    .font(Font.system(size: 12, weight: .regular))
+                + Text(activity.comment ?? "")
+                    .font(Font.system(size: 12, weight: .semibold))
+                + Text(" " + activity.duration)
+                    .font(Font.system(size: 10, weight: .light))
+            }
+            
+            Spacer()
+            
+            if activity.activity == .suggestFollower || activity.activity == .newFollower {
+                Button(activity.activity == .suggestFollower ? "Seguir" : "Seguindo" ) {
+                    print("teste")
+                }
+                .font(Font.system(size: 14, weight: .semibold))
+                .frame(width: 100, height: 30)
+                .foregroundStyle(activity.activity == .suggestFollower ? .white : .black)
+                .background(activity.activity == .suggestFollower ? .blue : .white)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(activity.activity == .suggestFollower ? .clear : .gray, lineWidth: 1)
+                }
+            } else {
+                Image(activity.postImage ?? "user")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 40, height: 40)
+                    .padding()
             }
         }
+        .padding(.horizontal, 15)
+        .padding(.vertical, 5)
     }
     
     func getDescription() -> String {
