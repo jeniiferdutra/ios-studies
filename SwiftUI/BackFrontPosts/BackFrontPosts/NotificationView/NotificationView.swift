@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct NotificationView: View {
+    
+    @State private var viewModel: NotificationViewModel = NotificationViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack { // onde vai ficar as notificacoes
-                    Text("Notification")
+                    ForEach(viewModel.activityList) { activity in
+                        ActivityView(activity: activity)
+                    }
                 }
             }
             .navigationTitle("Notificaçoes")

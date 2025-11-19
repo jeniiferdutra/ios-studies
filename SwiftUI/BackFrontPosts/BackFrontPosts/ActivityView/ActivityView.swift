@@ -57,7 +57,7 @@ struct ActivityView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 40, height: 40)
-                    .padding()
+                    .padding(.horizontal)
             }
         }
         .padding(.horizontal, 15)
