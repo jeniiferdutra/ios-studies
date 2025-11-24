@@ -12,7 +12,7 @@ struct ProfileView: View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    Text("teste")
+                    UserProfileView()
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

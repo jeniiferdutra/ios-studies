@@ -65,8 +65,28 @@ struct UserProfileView: View {
             Text("Seja o profissional mais procurado e bem remunerado do mercado de tecnologia.")
                 .font(Font.system(size: 13, weight: .regular))
                 .padding(.top, 1)
+            
+            HStack(spacing: 8) {
+                Group {
+                    Button("Editar perfil") {
+                        print("teste")
+                    }
+                    
+                    Button("Compartilhar perfil") {
+                        print("teste")
+                    }
+                }
+                .font(Font.system(size: 13, weight: .medium))
+                .foregroundStyle(.black)
+                .frame(height: 35)
+                .frame(maxWidth: .infinity)
+                .background(Color.gray.opacity(0.2))
+                .clipShape(RoundedRectangle(cornerRadius: 3))
+            }
+            .padding(.top, 10)
         }
         .padding(.horizontal, 15)
+        .padding(.vertical, 10)
     }
 }
 
