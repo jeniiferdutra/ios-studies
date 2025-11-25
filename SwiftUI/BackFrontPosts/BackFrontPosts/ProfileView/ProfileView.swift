@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    @State var viewModel = ProfileViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     UserProfileView()
+                    HighlightView(data: viewModel.highlightData)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
