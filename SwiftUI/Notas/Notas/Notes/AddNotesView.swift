@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddNotesView: View {
     
-    @ObservedObject var viewModel: NotesViewModel
+    @State var viewModel: NotesViewModel
     @State var note = Note()
     @Environment(\.dismiss) var dismiss
     

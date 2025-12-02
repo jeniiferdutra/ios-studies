@@ -7,9 +7,13 @@
 
 import Foundation
 
-class NotesViewModel: ObservableObject {
+// Observable → lida com dados que mudam com o tempo.
+// ObservableObject → faz a tela mudar quando os dados mudam.
+
+@Observable
+class NotesViewModel {
     
-    @Published var notes: [Note] = [] {
+    var notes: [Note] = [] {
         didSet { // toda vez q fazer att no notes, eu quero que salve em saveNotes()
             saveNotes()
         }
